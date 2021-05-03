@@ -1,0 +1,12 @@
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(31, 101, 121);
+    width: 6vw;
+    min-width: 50px;
+    margin: 2vw;
+    padding: 1vw;
+    border-radius: 20px;
+    font-size: 80%;
+}
