@@ -1,25 +1,23 @@
 import "./App.css";
-import Navbar from './components/Navbar/Navbar'
-import TaskList from './components/TaskList/TaskList'
+import Navbar from "./components/Navbar/Navbar";
+import TaskList from "./components/TaskList/TaskList";
 
 function App() {
-    return <div className="App">
+    return (
+        <div className="App">
+            <Navbar />
 
-        <Navbar />
+            <div className="body-container">
+                <TaskList title="To-Do" />
 
-        <div className="body-container">
+                <TaskList title="Doing" />
 
-            <TaskList title="To-Do" />
+                <TaskList title="Done" />
 
-            <TaskList title="Doing" />
-
-            <TaskList title="Done" />
-            
-            <TaskList title="Canceled" />
-
+                <TaskList title="Canceled" />
+            </div>
         </div>
-
-    </div>;
+    );
 }
 
 export default App;
