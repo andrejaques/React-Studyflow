@@ -1,6 +1,6 @@
 import React from 'react';
 
-class App extends React.Component {
+class MainOne extends React.Component {
   constructor() {
     super()
     this.handleClick = this.handleClick.bind(this)
@@ -16,9 +16,13 @@ class App extends React.Component {
   }
 
   render() {
-    return <button onClick={this.handleClick}>Click to increment - { this.state.numeroDeCliques } </button>
+    return (
+      <div className="mainTwo">
+        <button onClick={this.handleClick}>Click to increment - { this.state.numeroDeCliques } </button>
+      </div>
+    )
   }
 
 }
 
-export default App;
+export default MainOne;

@@ -1,13 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
 
-import Main from './components/main/Main'
+import MainOne from './components/mainOne/MainOne';
+import MainTwo from './components/mainTwo/MainTwo';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Main />
+        <span>Did With Class:</span>
+
+        <MainOne />
+
+        <span>Did with Function and Hooks:</span>
+        
+        <MainTwo />
       </header>
     </div>
   );
