@@ -5,10 +5,10 @@ import PropTypes from "prop-types";
 import TaskItem from "../TaskItem/TaskItem";
 
 export default function TaskList(props) {
-    const { title, onAddTask, tasks } = props;
+    const { title, onAddTask, tasks, onTaskUpdate, taskState } = props;
 
     const addTask = () => {
-        onAddTask("New Task", "To-Do");
+        onAddTask("New Task", taskState);
     };
 
     return (
@@ -23,6 +23,7 @@ export default function TaskList(props) {
                             id={task.id}
                             title={task.title}
                             taskState={task.state}
+                            onTaskUpdate={onTaskUpdate}
                         />
                     );
                 })}
