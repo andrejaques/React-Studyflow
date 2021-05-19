@@ -36,6 +36,12 @@ function App() {
         });
     };
 
+    const deleteTask = (id) => {
+        setTasks((existingTasks) => {
+            return existingTasks.filter(task => task.id !== id);
+        })
+    }
+
     return (
         <div className="App">
             <Navbar />
@@ -47,6 +53,7 @@ function App() {
                     taskState={"To-Do"}
                     tasks={tasks.filter((t) => t.state === "To-Do")}
                     onTaskUpdate={updateTasks}
+                    onDeleteTask={deleteTask}
                 />
 
                 <TaskList
@@ -55,6 +62,7 @@ function App() {
                     taskState={"Doing"}
                     tasks={tasks.filter((t) => t.state === "Doing")}
                     onTaskUpdate={updateTasks}
+                    onDeleteTask={deleteTask}
                 />
 
                 <TaskList
@@ -63,7 +71,8 @@ function App() {
                     taskState={"Done"}
                     tasks={tasks.filter((t) => t.state === "Done")}
                     onTaskUpdate={updateTasks}
-                />
+                    onDeleteTask={deleteTask}
+                    />
             </div>
         </div>
     );
