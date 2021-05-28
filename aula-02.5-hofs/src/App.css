@@ -1,4 +1,7 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   text-align: center;
 }
 
@@ -14,12 +17,13 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -35,4 +39,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.red {
+  border-right: 3px solid red;
+}
+
+.green {
+  border-right: 3px solid green;
+}
+
+.blue {
+  border-right: 3px solid blue;
+}
+
+.cyan {
+  border-right: 3px solid cyan;
+}
+
+.magenta {
+  border-right: 3px solid magenta;
+}
+
+.yellow {
+  border-right: 3px solid yellow;
+}
+
+.black {
+  border-right: 3px solid black;
 }
