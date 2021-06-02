@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class Counter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      counter: 0
+      counter: 0,
     };
     console.log("construtor");
   }
@@ -21,7 +21,7 @@ export default class Counter extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("componentDidUpdate");
+    console.log("componentDidUpdate", this.state, prevState);
     console.log("------------------");
   }
 
@@ -31,14 +31,25 @@ export default class Counter extends Component {
       <div>
         <p>Counter</p>
         <button
-          onClick={() => this.setState((state) => ({ counter: state.counter + 1 }))}
+          onClick={() =>
+            this.setState((state) => ({ counter: state.counter - 1 }))
+          }
         >
-          Add
+          Decrement
         </button>
         <button
-          onClick={() => this.setState((state) => ({ counter: state.counter - 1 }))}
+          onClick={() =>
+            this.setState((state) => ({ counter: parseInt(Math.random() * 100) }))
+          }
         >
-          Sub
+          Random
+        </button>
+        <button
+          onClick={() =>
+            this.setState((state) => ({ counter: state.counter + 1 }))
+          }
+        >
+          Increment
         </button>
         <p>{this.state.counter}</p>
       </div>

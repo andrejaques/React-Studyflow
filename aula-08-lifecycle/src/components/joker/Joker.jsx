@@ -6,6 +6,7 @@ export default class Joke extends Component {
 
     this.saveJoke = this.saveJoke.bind(this);
     this.renderJokeElement = this.renderJokeElement.bind(this);
+    this.clearJokes = this.clearJokes.bind(this);
 
     this.state = {
       jokeObj: undefined,
@@ -15,12 +16,18 @@ export default class Joke extends Component {
   }
 
   async fetchJoke() {
-    const requestHeaders = { headers: { Accept: 'application/json' } }
-    const requestReturn = await fetch('https://icanhazdadjoke.com/', requestHeaders)
-    const requestObject = await requestReturn.json();
-    this.setState({
-      jokeObj: requestObject,
-    })
+    this.setState(
+      { loading: true }, // Primeiro parametro de setState(), a partir dele é que se carrega o segundo
+      async () => {
+        const requestHeaders = { headers: { Accept: 'application/json' } }
+        const requestReturn = await fetch('https://icanhazdadjoke.com/', requestHeaders)
+        const requestObject = await requestReturn.json();
+        this.setState({
+          loading: false,
+          jokeObj: requestObject,
+        })
+      }
+    )
   }
 
   componentDidMount() {
@@ -28,8 +35,19 @@ export default class Joke extends Component {
   }
 
   saveJoke() {
-    //Salvando a piada no array de piadas existentes
+    this.setState(({ storedJokes, jokeObj }) => ({
+      storedJokes: [...storedJokes, jokeObj]
+    }))
 
+    this.fetchJoke();
+  }
+
+  clearJokes() {
+    this.setState(({ storedJokes, jokeObj }) => ({
+      jokeObj: "",
+      storedJokes: [],
+    }));
+    this.fetchJoke();
   }
 
   renderJokeElement() {
@@ -37,24 +55,27 @@ export default class Joke extends Component {
       <div>
         <p>{this.state.jokeObj.joke}</p>
         <button type="button" onClick={this.saveJoke}>
-          Salvar piada!
+          Save Joke!
         </button>
       </div>
     );
   }
 
   render() {
-    const { storedJokes } = this.state;
+    const { storedJokes, jokeObj, loading } = this.state;
     const loadingElement = <span>Loading...</span>;
 
     return (
       <div>
         <span>
-          {storedJokes.map(({ id, joke }) => (<p key={id}>{joke}</p>))}
+          {storedJokes.map(({ id, joke }) => (<p key={ id }> { joke } </p>))}
         </span>
 
-      <span>RENDERIZAÇÃO CONDICIONAL</span>
+        <p>{ loading ? loadingElement : this.renderJokeElement() }</p>
 
+        <button type="button" onClick={this.clearJokes} >
+          Clear Jokes!
+        </button>
       </div>
     );
   }
