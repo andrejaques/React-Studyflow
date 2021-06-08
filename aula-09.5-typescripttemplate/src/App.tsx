@@ -1,15 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
-  );
-}
+import { Navigation } from "./components/navigation/Navigation";
+import { Routes } from './components/routes/Routes';
+
+export const App = ({}) => (
+  <div className="App">
+    <Router>
+      <div>
+        <Navigation />
+        <Routes />
+      </div>
+    </Router>
+  </div>
+);
 
 export default App;
