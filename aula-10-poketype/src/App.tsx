@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <button type="button" onClick={getPokemons} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Get Pokemon
+        Get Pokemons
       </button>
     </div>
   );
