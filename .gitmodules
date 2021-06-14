@@ -1,0 +1,12 @@
+[submodule "aula-02p"]
+	ignore = untracked
+[submodule "aula-02"]
+	ignore = untracked
+[submodule "aula-04"]
+	ignore = untracked
+[submodule "aula-03-state-event"]
+	ignore = untracked
+[submodule "quiz"]
+	ignore = untracked
+[submodule "aula-01-my_first_app"]
+	ignore = untracked
