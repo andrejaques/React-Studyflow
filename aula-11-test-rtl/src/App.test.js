@@ -5,6 +5,11 @@
 // Fazer o teste
 
 // App.test.js
+
+// getByText - busca o texto, porém, senao encontrar, retorna um erro.
+// queryByText - buscaria o texto porem se nao encontrasse, continuaria com o teste.
+// findByText - busca o texto porém usado para algo asyncrono.
+
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import App from './App';
