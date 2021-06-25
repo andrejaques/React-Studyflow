@@ -1,3 +1,7 @@
+// Access the screen elements.
+// Interact the elements if necessary.
+// Check if match
+
 // Acessar os elementos da sua tela
 
 // Interagir com eles se tiver necessidade
