@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redux Without React</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.0/redux.min.js"></script>
+</head>
+<body>
+  <div>
+    <span>Clicked</span>
+    <span id="value"></span>
+    <span>Times</span>
+    <button id="increment">+</button>
+    <button id="decrement">-</button>
+  </div>
+  <script>
+    const store = Redux.createStore(contadorReducer);
+
+    function contadorReducer(state = 0, action) {
+      switch (action.type) {
+        case 'Increment' :
+          return state + action.value
+          break;
+        case 'Decrement' :
+          return state - action.value
+          break;
+        default:
+          return state
+          break;
+      }
+    }
+
+    document.getElementById('increment').addEventListener('click', () => {
+      store.dispatch({ 
+        type: 'Increment',
+        value: 1
+      })
+    })
+
+    document.getElementById('decrement').addEventListener('click', () => {
+      store.dispatch({ 
+        type: 'Decrement',
+        value: 1
+      })
+    })
+
+    store.subscribe(() => document.getElementById('value').innerHTML = store.getState());
+
+  </script>
+</body>
+</html>
