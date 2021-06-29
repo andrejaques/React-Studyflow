@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redux Without React</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.0/redux.min.js"></script>
+</head>
+<body>
+  <main>
+    <section>
+      <label for="taskInput">
+        <input type="text" id="taskInput">
+      </label>
+
+      <button id="btnAddTask">
+        Adicionar
+      </button>
+    </section>
+    <section id="showTasks">
+
+    </section>
+  </main>
+
+  <script>
+    // Redux Config
+    const INITIAL_STATE = {
+      tasks: []
+    }
+
+    const todoReducer = (state = INITIAL_STATE, action) => {
+      switch (action.type) {
+        case 'ADD_TASK':
+          return { tasks: [...state.tasks, action.payload]}
+        default: return state;
+      }
+    };
+
+    // Actions
+    const addTaskAction = (newTask) => ({
+      type: 'ADD_TASK',
+      payload: newTask
+    })
+
+    // Store
+    const store  = Redux.createStore(todoReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
+    const renderTasks = (tasks) => {
+      const sectionShowTasks = document.getElementById('showTasks');
+      sectionShowTasks.innerHTML = "";
+
+      tasks.forEach((task) => {
+        const li = document.createElement('li');
+        li.innerHTML = task
+        sectionShowTasks.appendChild(li);
+      })
+    }
+
+    store.subscribe(() => {
+      const tasksInStore = store.getState().tasks
+      renderTasks(tasksInStore);
+    })
+
+    // Page Events
+    const btnAddTask = document.getElementById('btnAddTask');
+    btnAddTask.addEventListener('click', () => {
+      const taskText = document.getElementById('taskInput').value;
+      store.dispatch(addTaskAction(taskText));
+    })
+
+  </script>
+</body>
+</html>
