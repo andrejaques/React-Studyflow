@@ -17,10 +17,13 @@ const requestPokemonError = (payload) => ({
   payload
 })
 
-export const fetchPokemon = (pokemonInput) => (dispatch) => {
+export const fetchPokemon = (pokemonInput) => async (dispatch) => {
   dispatch(requestPokemon())
-  return fetch(`https://api.pokemontcg.io/v1/cards?name=${pokemonInput}`)
-    .then((result) => result.json())
-    .then((data) => dispatch(requestPokemonSuccess(data.cards[0])))
-    .catch((error) => dispatch(requestPokemonError(error)))
+  try {
+    const result = await fetch(`https://api.pokemontcg.io/v1/cards?name=${pokemonInput}`)
+    const data = await result.json()
+    return dispatch(requestPokemonSuccess(data.cards[0]))
+  } catch (error) {
+    return dispatch(requestPokemonError(error))
+  }
 }
