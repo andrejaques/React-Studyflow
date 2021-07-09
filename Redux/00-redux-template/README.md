@@ -35,7 +35,7 @@
 - [ ] configurar os exports do arquivo index.js
 
 *Na pasta actions:*
-- [ ] criar os actionTypes, por exemplo: `cosnt ADD_TODO = 'ADD_TODO'` (Não obrigatório)
+- [ ] criar os actionTypes, por exemplo: `const ADD_TODO = 'ADD_TODO'` (Não obrigatório)
 - [ ] criar as actions necessárias
 
 *Nos componentes:*
