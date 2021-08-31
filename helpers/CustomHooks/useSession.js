@@ -14,11 +14,29 @@ export const SessionProvider = ({ children }) => {
       { children }
     </Session.Provider>
   );
-}
+};
 
-const useSession = ({ children }) => {
-
+const useSession = () => {
+  const { user, setUser } = useContext(Session);
   
-}
+  return [user, setUser];
+};
 
-export default useSession
+export default useSession;
+
+// index.js
+
+/*
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+import App from './App'
+import { sessionProvider } from '.customHooks/useSession'
+
+ReactDOM.render(
+  <sessionProvider>
+    <App />
+  </sessionProvider>,
+  document.getElementById('root')
+)
+*/
